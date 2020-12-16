@@ -1,25 +1,44 @@
 {
+  "name": "mooddatacollection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "fitbit-build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fitbit/sdk": "^5.0.1",
+    "@fitbit/sdk-cli": "^1.7.3",
+    "accelerometer": "^1.2.0",
+    "fitbit-asap": "^1.2.3"
+  },
   "fitbit": {
-    "appUUID": "80191b95-aeb3-4dbc-8a03-3338621f44b1",
+    "appUUID": "41c32227-862f-4486-bd41-876918a50cd0",
     "appType": "app",
-    "appDisplayName": "MoodTrack",
+    "appDisplayName": "mood",
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
     "requestedPermissions": [
+      "access_heart_rate",
+      "access_activity",
+      "access_sleep",
+      "access_exercise",
+      "run_background",
       "access_internet",
-      "run_background"
+      "access_location",
+      "access_user_profile"
     ],
     "buildTargets": [
-      "higgs",
-      "meson"
+      "vulcan"
     ],
     "i18n": {
-      "en": {
-        "name": "MoodTrack"
+      "en-US": {
+        "name": "mood track"
       }
-    }
-  },
-  "devDependencies": {
-    "@fitbit/sdk": "~2.0.0"
+    },
+    "defaultLanguage": "en-US"
   }
 }

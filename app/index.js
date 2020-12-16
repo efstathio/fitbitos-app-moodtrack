@@ -1,24 +1,45 @@
 import document from "document";
-import * as messaging from "messaging";
+import {send} from "./transport";
+import { me } from "appbit";
 
-const btn_good = document.getElementById("btn-good");
-const btn_neutral = document.getElementById("btn-neutral");
-const btn_bad = document.getElementById("btn-bad");
+let btn_sad = document.getElementById("btn-sad");
+let btn_neutral = document.getElementById("btn-neutral");
+let btn_happy = document.getElementById("btn-happy");
 
-const eventName = "mood_log";
 
-btn_good.addEventListener("click", () => {
-  sendEventIfReady(eventName, "good");
-});
-btn_neutral.addEventListener("click", () => {
-  sendEventIfReady(eventName, "neutral");
-});
-btn_bad.addEventListener("click", () => {
-  sendEventIfReady(eventName, "bad");
-});
+btn_sad.addEventListener("click", (evt) => {
+  console.log("CLICKED");
+  let mood_sad = {
+      dataType: "mood_input",
+      key: "mood",
+      value: "sad",
+      timestamp: new Date().getTime()
+    }
+    send(mood_sad)
+    me.exit()
+})
 
-function sendEventIfReady(eventName, val) {
-  if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
-    messaging.peerSocket.send({eventName: eventName, result: val});
+btn_neutral.addEventListener("click", (evt) => {
+  console.log("CLICKED");
+  let mood_neutral = {
+    dataType: "mood_input",
+    key: "mood",
+    value: "neutral",
+    timestamp: new Date().getTime()
   }
-}
+  send(mood_neutral)
+  me.exit()
+})
+
+btn_happy.addEventListener("click", (evt) => {
+  console.log("CLICKED");
+  let mood_happy = {
+    dataType: "mood_input",
+    key: "mood",
+    value: "happy",
+    timestamp: new Date().getTime()
+  }
+  send(mood_happy)
+  me.exit()
+})
+
